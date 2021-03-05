@@ -88,6 +88,7 @@
     lineinfile:
       path: /etc/default/kubelet
       line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
+      create: yes
 
   - name: Restart kubelet
     service:
@@ -96,7 +97,6 @@
       state: restarted
  
   # Join the nodes to the Kubernetes cluster
-  
   - name: Copy the join command to server location
     copy: src=join-command dest=/tmp/join-command.sh mode=0777
 
