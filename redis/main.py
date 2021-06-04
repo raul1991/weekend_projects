@@ -18,7 +18,7 @@ class ActivityTracker(object):
 
     def track(self, event: {}):
         print(event['x'], event['y'])
-        ts = time.time_ns()
+        ts = time.time()
         print(ts)
         self.r.set(str(ts), json.dumps(event))
 
