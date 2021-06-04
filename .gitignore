@@ -3,3 +3,7 @@
 *.retry
 # .idea files
 **/.idea/**
+# terraform
+**/.terraform/**
+.terraform.lock.*
+terraform.tfstate.backup
