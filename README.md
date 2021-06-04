@@ -35,3 +35,7 @@ The file structure would look like this
 1. [Ansible](/ansible)
 
 2. [Vagrant](/vagrant)
+
+3. [Redis](/redis)
+
+4. [Terraform](/terrform)
