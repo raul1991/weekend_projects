@@ -22,7 +22,7 @@ const ExpenseForm = (props) => {
     event.preventDefault();
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount, // doing a number conversion
       date: new Date(enteredDate),
     };
 
@@ -31,6 +31,8 @@ const ExpenseForm = (props) => {
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
+    // hiding the expense form
+    props.onCancel();
   };
 
   return (
@@ -65,8 +67,15 @@ const ExpenseForm = (props) => {
           />
         </div>
       </div>
-      <div className="new-expense__actions">
-        <button type="submit"> Add Expense </button>
+      <div className="new-expense__controls">
+        <div className="new-expense__actions">
+          <button type="button" onClick={props.onCancel}>
+            Cancel
+          </button>
+        </div>
+        <div className="new-expense__actions">
+          <button type="submit" onClick={props.onFormShown}> Add Expense </button>
+        </div>
       </div>
     </form>
   );
