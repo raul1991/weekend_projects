@@ -7,3 +7,4 @@
 **/.terraform/**
 .terraform.lock.*
 terraform.tfstate.backup
+**/.DS_Store
