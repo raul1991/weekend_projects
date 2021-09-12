@@ -1,19 +1,17 @@
 import React, { useState } from "react";
-import Modal from "./components/UI/Modal";
 import AddUser from "./components/Users/AddUser";
+import UserList from "./components/Users/UserList";
 
 function App() {
   const [users, updateUsers] = useState([]);
   const [isFormValid, setIsFormValid] = useState(true);
 
-  const onUserAddedHandler = (newUser, isFormValid) => {
-    if (!isFormValid) {
+  const onUserAddedHandler = (newUser, errors) => {
+    if (errors.length > 0) {
       setIsFormValid(false);
     } else {
       updateUsers((prevUsers) => {
-        let newUsers = [...prevUsers, newUser];
-        console.log(newUsers);
-        return newUsers;
+        return [...prevUsers, newUser];
       });
     }
   };
@@ -25,13 +23,7 @@ function App() {
   return (
     <div>
       <AddUser onUserAdded={onUserAddedHandler} />
-      <Modal
-        hide={isFormValid}
-        title={"Form can't be submitted"}
-        onClick={onCloseHandler}
-      >
-        <p>The inputs provided aren't correct. Please fix them</p>
-      </Modal>
+      <UserList users={users} />
     </div>
   );
 }
